@@ -1,0 +1,64 @@
+{% style %}
+  .logo-image-container {
+    display: flex;
+    justify-content: center;
+    min-width: 250px;
+  }
+  .logo-image {
+    display: flex;
+    justify-content: center;
+  }
+
+  @media screen and (max-width: {{settings.breakpoint_lg}}px) {
+    .logo-image-container {
+      max-width: 50%;
+    }
+  }
+
+  .logo-image-container svg {
+    height: 100%;
+    width: 100%;
+  }
+{% endstyle %}
+
+<div class="logo-image">
+  {% render 'logo-no-text' %}
+</div>
+
+{% schema %}
+{
+  "name": "Logo",
+  "class": "logo-image-container",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "logo-image",
+      "label": "Logo Image"
+    },
+    {
+      "type": "text",
+      "id": "alt-text",
+      "label": "Alt Text",
+      "info": "Text that takes the place of an image if it cannot be loaded.",
+      "default": "Bearly Farms Logo"
+    }
+    // {
+    //   "type": "number",
+    //   "id": "height",
+    //   "label": "Height (px)",
+    //   "default": 400
+    // },
+    // {
+    //   "type": "number",
+    //   "id": "width",
+    //   "label": "Width (px)",
+    //   "default": 400
+    // }
+  ],
+  "presets": [
+    {
+      "name": "Logo"
+    }
+  ]
+}
+{% endschema %}

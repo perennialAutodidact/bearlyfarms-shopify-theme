@@ -1,0 +1,181 @@
+{% style %}
+  #shopify-block-{{ block.id }} {
+    display: {% if block.settings.hide_on_mobile %} none {% else %} flex {% endif %};
+  }
+
+  .social-icons{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    gap: 20px;
+  }
+
+  .social-icons-container {
+    padding: 1rem 0;
+  }
+
+  @media screen and (min-width: {{ settings.breakpoint_lg }}px){
+
+    #shopify-block-{{ block.id }} {
+      display: {% if block.settings.hide_on_desktop %} none {% else %} flex {% endif %};
+    }
+
+    .social-icons-container {
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    .social-icons {
+      padding: 2rem 0;
+      justify-content: flex-end;
+      gap: 20px;
+      flex-direction: {{ block.settings.orientation }};
+    }
+  }
+{% endstyle %}
+
+<div class="social-icons">
+  {% content_for 'blocks' %}
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const breakpoints = {
+        sm: {{ settings.breakpoint_sm | json}},
+        md: {{ settings.breakpoint_md | json}},
+        lg: {{ settings.breakpoint_lg | json}},
+        xl: {{ settings.breakpoint_xl | json}},
+        xxl: {{ settings.breakpoint_xxl | json}},
+      }
+      const timelines = {}
+      const screenWidth = document.documentElement.clientWidth;
+
+      // function hideSocialIcons () {
+      //   const hideOnMobile = {{ block.settings.hide_on_mobile }};
+      //   const hideOnDesktop = {{ block.settings.hide_on_desktop }};
+
+      //   const shouldHideOnMobile = hideOnMobile && screenWidth < breakpoints.lg;
+      //   const shouldHideOnDesktop = hideOnDesktop && screenWidth >= breakpoints.lg;
+      //   socialIconsContainers.forEach((container)=>{
+      //     console.log({container, shouldHideOnDesktop, shouldHideOnMobile})
+      //     if (shouldHideOnMobile || shouldHideOnDesktop){
+      //       container.style.display = 'none';
+      //     } else {
+      //       container.style.display = 'flex';
+      //     }
+      //   })
+      // }
+      // window.addEventListener('resize', hideSocialIcons);
+      // hideSocialIcons()
+
+      function setup() {
+        const socialIcons = document.querySelectorAll('.social-icon');
+          if(screenWidth >= breakpoints.lg){
+          const initialColor = {{ settings.color_light | json }}
+          
+          socialIcons.forEach(icon => {
+            const iconSelector = gsap.utils.selector(icon);
+            
+            const timeline = gsap.timeline({
+              paused: true,
+              defaults: { ease: 'power1.inOut' },
+            });
+            const iconHoverColor = {{ block.settings.icon_hover_color | json }}
+            
+            Array.from([2, 1, 0]).forEach((offset, index) => {
+              timeline.fromTo(
+                iconSelector(`.layer-${index + 1}`),
+                { left: `${-offset * 5}px` },
+                { duration: 0.2, left: 0 },
+                `-=${0.2 * index}`
+              );
+            });
+            
+            timeline.fromTo(
+              iconSelector('.layer-3 svg *  '),
+              { fill: initialColor },
+              { duration: 0.4, fill: iconHoverColor },
+              '-=0.3'
+            );
+            
+            icon.addEventListener('mouseover', (event) => {
+              timeline.play()
+            });
+            
+            icon.addEventListener('mouseout', (event) => {
+              timeline.reverse()
+            });
+          })
+        } else {
+          socialIcons.forEach(icon => {
+            const iconSelector = gsap.utils.selector(icon);
+            
+            Array.from([2, 1, 0]).forEach((offset, index) => {
+              gsap.set(
+                iconSelector(`.layer-${index + 1}`),
+                { top: `${-offset * 5}px` },
+              );
+            });
+          }) 
+        }
+      }
+      setup();
+  })
+</script>
+
+{% schema %}
+{
+  "name": "Social Icons",
+  "blocks": [{ "type": "@theme" }],
+  "class": "social-icons-container",
+  "settings": [
+    {
+      "type": "select",
+      "id": "orientation",
+      "label": "Orientation",
+      "options": [
+        {
+          "label": "Horizontal",
+          "value": "row"
+        },
+        {
+          "label": "Vertical",
+          "value": "column"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "icon_hover_color",
+      "label": "Icon Hover Color",
+      "options": [
+        {
+          "label": "Orange",
+          "value": "#F08700"
+        },
+        {
+          "label": "Yellow",
+          "value": "#EFCA08"
+        }
+      ]
+    },
+    {
+      "type": "checkbox",
+      "id": "hide_on_mobile",
+      "default": false,
+      "label": "Hide on Mobile"
+    },
+    {
+      "type": "checkbox",
+      "id": "hide_on_desktop",
+      "default": false,
+      "label": "Hide on Desktop"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Social Icons"
+    }
+  ]
+}
+{% endschema %}

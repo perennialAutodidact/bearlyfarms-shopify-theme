@@ -1,0 +1,39 @@
+{% style %}
+  .hero-row {
+    width: 100%;
+    display: flex;
+  }
+  @media screen and (max-width: {{ settings.breakpoint_lg }}px){
+    .hero-row {
+        display: {% if block.settings.hide_on_mobile %} none {% else %} flex {% endif %};
+    }
+  }
+{% endstyle %}
+
+{% content_for 'blocks' %}
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {});
+</script>
+
+{% schema %}
+{
+  "name": "Hero Row",
+  "blocks": [{ "type": "@theme" }],
+  "class": "hero-row",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "hide_on_mobile",
+      "label": "Hide on Mobile",
+      "default": false
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero Row",
+      "blocks": [{ "type": "social-icons" }]
+    }
+  ]
+}
+{% endschema %}

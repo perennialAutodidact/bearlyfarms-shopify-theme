@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="{{ request.locale.iso_code }}">
+  <head>
+    {% # Inlined CSS Variables %}
+    {% render 'css-variables' %}
+
+    {% # Load and preload the critical CSS %}
+    {{ 'critical.css' | asset_url | stylesheet_tag: preload: true }}
+
+    {% # Load js scripts %}
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js" async></script>
+    {% style %}
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        font-family: var(--font-secondary--family);
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .container {
+        max-width: 1400px;
+        margin: 0 auto;
+      }
+
+      .hidden_mobile {
+        @media screen and (max-width: {{ settings.breakpoint_lg }}px) {
+          display: none !important;
+        }
+      }
+
+      .hidden_desktop {
+        @media screen and (min-width: {{ settings.breakpoint_lg }}px) {
+          display: none !important;
+        }
+      }
+
+      @media screen and (min-width: {{ settings.breakpoint_lg }}px) {
+        .h1 {
+          font-size: 4rem;
+        }
+      }
+    {% endstyle %}
+    {% # Social, title, etc. %}
+    {% render 'meta-tags' %}
+
+    {{ content_for_header }}
+  </head>
+
+  <body>
+    {% sections 'header-group' %}
+
+    {{ content_for_layout }}
+
+    {% comment %} {% sections 'footer-group' %} {% endcomment %}
+
+    <script src="{{'js/social-icon.js' |  asset_url}}" async></script>
+  </body>
+</html>

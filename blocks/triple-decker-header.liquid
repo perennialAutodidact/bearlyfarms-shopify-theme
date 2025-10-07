@@ -1,0 +1,60 @@
+{% style %}
+  .triple-decker-header {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+    font-size: 3rem;
+    letter-spacing: 2px;
+    margin-top: 1.5rem;
+  }
+
+  .triple-decker-header .layer {
+    margin-top: -1.3rem;
+  }
+
+  @media screen and (min-width: {{settings.breakpoint_sm}}px) {
+    .triple-decker-header .layer {
+      font-size: 4.5rem;
+    }
+  }
+
+  @media screen and (min-width: {{settings.breakpoint_xxl}}px) {
+    .triple-decker-header .layer {
+      font-size: 5rem;
+    }
+  }
+
+  .triple-decker-header .layer:nth-child(1) {
+  color: {{settings.color_primary_900}}
+  }
+
+  .triple-decker-header .layer:nth-child(2) {
+  color: {{settings.color_primary_500}};
+
+  }
+  .triple-decker-header .layer:nth-child(3) {
+  color: {{settings.color_light}};
+  text-shadow: 0 -5px 10px {{settings.color_dark}};
+  }
+{% endstyle %}
+
+<h1 class="triple-decker-header" aria-label="{{block.settings.text}}">
+  {% for i in (1..3) %}
+    <span class="layer">{{ block.settings.text }}</span>
+  {% endfor %}
+</h1>
+
+{% schema %}
+{
+  "name": "Triple-Decker Header",
+  "settings": [
+    {
+      "type": "text",
+      "id": "text",
+      "label": "Header Text"
+    }
+  ],
+  "presets": [{ "name": "Triple Decker Logo" }]
+}
+{% endschema %}

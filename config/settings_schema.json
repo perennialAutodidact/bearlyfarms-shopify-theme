@@ -1,0 +1,233 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "Skeleton",
+    "theme_version": "0.1.0",
+    "theme_author": "Shopify",
+    "theme_documentation_url": "https://help.shopify.com/manual/online-store/themes",
+    "theme_support_url": "https://support.shopify.com/"
+  },
+  {
+    "name": "t:general.typography",
+    "settings": [
+      {
+        "type": "header",
+        "content": "t:general.fonts"
+      },
+      {
+        "type": "font_picker",
+        "id": "type_primary_font",
+        "default": "work_sans_n4",
+        "label": "t:general.primary"
+      },
+    ]
+  },
+  {
+    "name": "t:general.layout",
+    "settings": [
+      {
+        "type": "select",
+        "id": "max_page_width",
+        "label": "t:labels.page_width",
+        "options": [
+          {
+            "value": "90rem",
+            "label": "t:options.page_width.narrow"
+          },
+          {
+            "value": "110rem",
+            "label": "t:options.page_width.wide"
+          }
+        ],
+        "default": "90rem"
+      },
+      {
+        "type": "range",
+        "id": "min_page_margin",
+        "min": 10,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "label": "t:labels.page_margin",
+        "default": 20
+      }
+    ]
+  },
+  {
+    "name": "t:general.breakpoints",
+    "settings": [
+      {
+        "type": "number",
+        "id": "breakpoint_xs",
+        "label": "Breakpoint - Extra Small (> 0px)",
+        "default": 0,
+      },
+      {
+        "type": "number",
+        "id": "breakpoint_sm",
+        "label": "Breakpoint - Small (>= 576px)",
+        "default": 576
+      },
+      {
+        "type": "number",
+        "id": "breakpoint_md",
+        "label": "Breakpoint - Medium (>= 768)",
+        "default": 768
+      },
+      {
+        "type": "number",
+        "id": "breakpoint_lg",
+        "label": "Breakpoint - Large (>= 992px)",
+        "default": 992
+      },
+      {
+        "type": "number",
+        "id": "breakpoint_xl",
+        "label": "Breakpoint - Extra Large (>= 1200px)",
+        "default": 1200
+      },
+      {
+        "type": "number",
+        "id": "breakpoint_xxl",
+        "label": "Breakpoint - Extra Extra Large (>= 1400px)",
+      }
+    ],
+  },
+  {
+    "name": "t:general.colors",
+    "settings": [
+      {
+        "type": "color",
+        "id": "color_light",
+        "label": "Light",
+        "default": "#ECFEFE"
+      },
+      {
+        "type": "color",
+        "id": "color_dark",
+        "label": "Dark",
+        "default": "#031717"
+      },
+
+
+      {
+        "type": "color",
+        "id": "color_primary_100",
+        "label": "Primary 100",
+        "default": "#27E7E7"
+      },
+      {
+        "type": "color",
+        "id": "color_primary_300",
+        "label": "Primary 300",
+        "default": "#0BD0D0"
+      },
+      {
+        "type": "color",
+        "id": "color_primary_500",
+        "label": "Primary 500",
+        "default": "#00A6A6",
+      },
+      {
+        "type": "color",
+        "id": "color_primary_700",
+        "label": "Primary 700",
+        "default": "#066F6F"
+      },
+      {
+        "type": "color",
+        "id": "color_primary_900",
+        "label": "Primary 900",
+        "default": "#073C3C"
+      },
+
+
+      {
+        "type": "color",
+        "id": "color_secondary_100",
+        "label": "Secondary 100",
+        "default": "#EEB368"
+      },
+      {
+        "type": "color",
+        "id": "color_secondary_300",
+        "label": "Secondary 300",
+        "default": "#F49E2F"
+      },
+      {
+        "type": "color",
+        "id": "color_secondary_500",
+        "label": "Secondary 500",
+        "default": "#F08700",
+      },
+      {
+        "type": "color",
+        "id": "color_secondary_700",
+        "label": "Secondary 700",
+        "default": "#B36909"
+      },
+      {
+        "type": "color",
+        "id": "color_secondary_900",
+        "label": "Secondary 900",
+        "default": "#7C4C0E"
+      },
+
+
+      {
+        "type": "color",
+        "id": "color_warning_100",
+        "label": "Warning 100",
+        "default": "#F7F0CA"
+      },
+      {
+        "type": "color",
+        "id": "color_warning_300",
+        "label": "Warning 300",
+        "default": "#F2DC69"
+      },
+      {
+        "type": "color",
+        "id": "color_warning_500",
+        "label": "Warning 500",
+        "default": "#EFCA08",
+      },
+      {
+        "type": "color",
+        "id": "color_warning_700",
+        "label": "Warning 700",
+        "default": "#B29810"
+      },
+      {
+        "type": "color",
+        "id": "color_warning_900",
+        "label": "Warning 900",
+        "default": "#7C6B13"
+      },
+
+
+      {
+        "type": "color",
+        "id": "background_color",
+        "default": "#FFFFFF",
+        "label": "t:labels.background"
+      },
+      {
+        "type": "color",
+        "id": "foreground_color",
+        "default": "#333333",
+        "label": "t:labels.foreground"
+      },
+      {
+        "type": "range",
+        "id": "input_corner_radius",
+        "min": 0,
+        "max": 10,
+        "step": 1,
+        "unit": "px",
+        "label": "t:labels.input_corner_radius",
+        "default": 4
+      }
+    ]
+  }
+]

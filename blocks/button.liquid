@@ -1,0 +1,91 @@
+{% style %}
+  .button {
+    /* width: fit-contents; */
+    max-width: 80%;
+    margin: {{block.settings['margin-top']}}px {{block.settings['margin-right']}}px {{block.settings['margin-bottom']}}px {{block.settings['margin-left']}}px;
+    padding: 0.75rem 1.5rem;
+
+    background: linear-gradient(5deg, {{settings.color_secondary_300}} 10%, {{settings.color_secondary_500}} 50%, {{settings.color_secondary_100}} 100%);
+    background-size: 200% 200%;
+    box-shadow: 0 5px 10px {{settings.color_dark}};
+    transition:  all 0.2s ease-in-out;
+    font-size: 1.3rem;
+    text-align: center;
+  }
+
+  .button:hover {
+    transform: scale(1.02);
+    cursor: pointer;
+  }
+{% endstyle %}
+
+{% assign tag = block.settings.tag %}
+
+<{{ tag }}>
+  {{ block.settings.text }}
+</{{ tag }}>
+
+{% schema %}
+{
+  "name": "Button",
+  "class": "button",
+  "settings": [
+    {
+      "type": "text",
+      "id": "text",
+      "label": "Text",
+      "default": "Button text"
+    },
+    {
+      "type": "text",
+      "id": "href",
+      "label": "Link URL"
+    },
+    {
+      "type": "select",
+      "id": "tag",
+      "label": "Button Type",
+      "default": "a",
+      "options": [
+        {
+          "label": "Link",
+          "value": "a"
+        },
+        {
+          "label": "Button",
+          "value": "button"
+        }
+      ]
+    },
+    {
+      "type": "number",
+      "id": "margin-top",
+      "default": 0,
+      "label": "Margin Top (px)"
+    },
+    {
+      "type": "number",
+      "id": "margin-right",
+      "default": 0,
+      "label": "Margin Right (px)"
+    },
+    {
+      "type": "number",
+      "id": "margin-bottom",
+      "default": 0,
+      "label": "Margin Bottom (px)"
+    },
+    {
+      "type": "number",
+      "id": "margin-left",
+      "default": 0,
+      "label": "Margin Left (px)"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Button"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,202 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main",
+      "settings": {}
+    },
+    "hero": {
+      "type": "hero",
+      "blocks": {
+        "hero_column_WDPcn6": {
+          "type": "hero-column",
+          "name": "Hero Column",
+          "settings": {},
+          "blocks": {
+            "logo_header_group_gaRjt6": {
+              "type": "logo-header-group",
+              "name": "Logo Header Group",
+              "settings": {},
+              "blocks": {
+                "logo_image_rme4U6": {
+                  "type": "logo-image",
+                  "settings": {
+                    "logo-image": "shopify://shop_images/logo-no-text.png",
+                    "alt-text": "Bearly Farms Logo"
+                  },
+                  "blocks": {}
+                },
+                "triple_decker_header_6E7cUm": {
+                  "type": "triple-decker-header",
+                  "settings": {
+                    "text": "Bearly Farms"
+                  },
+                  "blocks": {}
+                },
+                "social_icons_9H4zH3": {
+                  "type": "social-icons",
+                  "name": "Social Icons",
+                  "settings": {
+                    "orientation": "row",
+                    "icon_hover_color": "#F08700",
+                    "hide_on_mobile": false,
+                    "hide_on_desktop": true
+                  },
+                  "blocks": {
+                    "social_icon_dh4NAi": {
+                      "type": "social-icon",
+                      "name": "Social Icon",
+                      "settings": {
+                        "social-icon": "instagram",
+                        "size_desktop": "50",
+                        "size_mobile": "30"
+                      },
+                      "blocks": {}
+                    },
+                    "social_icon_M4nCm7": {
+                      "type": "social-icon",
+                      "name": "Social Icon",
+                      "settings": {
+                        "social-icon": "facebook",
+                        "size_desktop": "50",
+                        "size_mobile": "30"
+                      },
+                      "blocks": {}
+                    }
+                  },
+                  "block_order": [
+                    "social_icon_dh4NAi",
+                    "social_icon_M4nCm7"
+                  ]
+                }
+              },
+              "block_order": [
+                "logo_image_rme4U6",
+                "triple_decker_header_6E7cUm",
+                "social_icons_9H4zH3"
+              ]
+            }
+          },
+          "block_order": [
+            "logo_header_group_gaRjt6"
+          ]
+        },
+        "hero_column_W7cWPt": {
+          "type": "hero-column",
+          "name": "Hero Column",
+          "settings": {},
+          "blocks": {
+            "heading_JEHaee": {
+              "type": "heading",
+              "name": "Heading",
+              "settings": {
+                "text": "The best time to plant a tree was 20 years ago...",
+                "tag": "h1",
+                "color": "color_light"
+              },
+              "blocks": {}
+            },
+            "text_4m7dgw": {
+              "type": "text",
+              "name": "t:general.text",
+              "settings": {
+                "text": "the second best time is now!",
+                "text_style": "text--subtitle",
+                "alignment_desktop": "left",
+                "alignment_mobile": "center",
+                "color": "color_light"
+              },
+              "blocks": {}
+            },
+            "button_Rgt3fA": {
+              "type": "button",
+              "name": "Button",
+              "settings": {
+                "text": "Start planting today!",
+                "href": "",
+                "tag": "a",
+                "margin-top": 120,
+                "margin-right": 0,
+                "margin-bottom": 24,
+                "margin-left": 0
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "heading_JEHaee",
+            "text_4m7dgw",
+            "button_Rgt3fA"
+          ]
+        },
+        "hero_row_rbFyVH": {
+          "type": "hero-row",
+          "name": "Hero Row",
+          "settings": {
+            "hide_on_mobile": true
+          },
+          "blocks": {
+            "social_icons_HzwyGc": {
+              "type": "social-icons",
+              "settings": {
+                "orientation": "column",
+                "icon_hover_color": "#F08700",
+                "hide_on_mobile": true,
+                "hide_on_desktop": false
+              },
+              "blocks": {
+                "social_icon_zL9KRM": {
+                  "type": "social-icon",
+                  "name": "Social Icon",
+                  "settings": {
+                    "social-icon": "instagram",
+                    "size_desktop": "50",
+                    "size_mobile": "30"
+                  },
+                  "blocks": {}
+                },
+                "social_icon_cxkdYQ": {
+                  "type": "social-icon",
+                  "name": "Social Icon",
+                  "settings": {
+                    "social-icon": "facebook",
+                    "size_desktop": "50",
+                    "size_mobile": "30"
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "social_icon_zL9KRM",
+                "social_icon_cxkdYQ"
+              ]
+            }
+          },
+          "block_order": [
+            "social_icons_HzwyGc"
+          ]
+        }
+      },
+      "block_order": [
+        "hero_column_WDPcn6",
+        "hero_column_W7cWPt",
+        "hero_row_rbFyVH"
+      ],
+      "settings": {
+        "hero_bg_image": "shopify://shop_images/gnomes-bg.png"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "hero"
+  ]
+}

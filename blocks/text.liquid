@@ -1,0 +1,92 @@
+{% doc %}
+  Renders a text block.
+
+  @example
+  {% content_for 'block', type: 'text', id: 'text' %}
+{% enddoc %}
+
+<div
+  class="text {{ block.settings.text_style }}"
+  {{ block.shopify_attributes }}
+>
+  {{ block.settings.text }}
+</div>
+
+{% style %}
+  #shopify-block-{{ block.id }} {
+    width: 100%;
+  }
+
+  .text {
+    text-align: {{ block.settings.alignment_mobile }};
+    color: {{settings[block.settings.color]}};
+    width: 100%;
+  }
+
+  @media screen and (min-width: {{settings.breakpoint_xl}}px) {
+    .text {
+      text-align: {{ block.settings.alignment_desktop }};
+    }
+  }
+
+  .text--title {
+    font-size: 2rem;
+    font-weight: 700;
+  }
+  .text--subtitle {
+    font-size: 1.5rem;
+  }
+{% endstyle %}
+
+{% schema %}
+{
+  "name": "t:general.text",
+  "settings": [
+    {
+      "type": "text",
+      "id": "text",
+      "label": "t:labels.text",
+      "default": "Text"
+    },
+    {
+      "type": "select",
+      "id": "text_style",
+      "label": "t:labels.text_style",
+      "options": [
+        { "value": "text--title", "label": "t:options.text_style.title" },
+        { "value": "text--subtitle", "label": "t:options.text_style.subtitle" },
+        { "value": "text--normal", "label": "t:options.text_style.normal" }
+      ],
+      "default": "text--title"
+    },
+    {
+      "type": "text_alignment",
+      "id": "alignment_desktop",
+      "label": "Alignment (Desktop)",
+      "default": "left"
+    },
+    {
+      "type": "text_alignment",
+      "id": "alignment_mobile",
+      "label": "Alignment (Mobile)",
+      "default": "left"
+    },
+    {
+      "type": "select",
+      "id": "color",
+      "label": "Color",
+      "options": [
+        {
+          "label": "Light",
+          "value": "color_light"
+        },
+        {
+          "label": "Dark",
+          "value": "color_dark"
+        }
+      ]
+    }
+  ],
+  "presets": [{ "name": "t:general.text" }]
+}
+{% endschema %}
