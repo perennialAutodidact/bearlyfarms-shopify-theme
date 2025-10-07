@@ -49,15 +49,40 @@
   }
 {% endstyle %}
 
-<div class="social-icon {{block.settings['social-icon']}}">
+{% assign social_url = block.settings.social_url.url %}
+{% comment %} {% assign is_phone = block.settings.social_icon contains 'phone' %} {% endcomment %}
+{% comment %} {% assign is_email = block.settings.social_icon contains 'email' %} {% endcomment %}
+{% assign icon_filename = block.settings.social_icon | split: '/' | last %}
+{% assign social_icon = 'images/icons/' | append: icon_filename | inline_asset_content %}
+
+{% liquid
+  if block.settings.social_icon contains 'phone'
+    assign href = 'tel:{{shop.phone}}'
+  elsif block.settings.social_icon contains 'email'
+    assign href = 'mailto:{{shop.email}}'
+  else
+    assign href = social_url
+  endif
+%}
+
+<div class="social-icon {{block.settings.social_icon}}">
+  {{ icon_filename }}
   {% for i in (1..3) %}
-    <a
-      href="{{ block.settings['social-url'] }}"
-      target="_blank"
-      class="layer layer-{{i}} {% if i < 3 %} hidden_mobile {% endif %}"
-    >
-      {{ 'images/icons/' | append: block.settings['social-icon'] | append: '.svg' | inline_asset_content }}
-    </a>
+    {% if i == 3 %}
+      <a
+        href="{{ href}}"
+        rel="noreferrer"
+        target="_blank"
+        class="layer layer-{{i}} {% if i < 3 %} hidden_mobile {% endif %}"
+      >
+        {{ social_icon }}
+      </a>
+
+    {% else %}
+      <span class="layer layer-{{i}}">
+        {{ social_icon }}
+      </span>
+    {% endif %}
   {% endfor %}
 </div>
 
@@ -66,23 +91,13 @@
   "name": "Social Icon",
   "settings": [
     {
-      "type": "select",
-      "id": "social-icon",
-      "label": "Social Icon",
-      "options": [
-        {
-          "label": "Facebook",
-          "value": "facebook"
-        },
-        {
-          "label": "Instagram",
-          "value": "instagram"
-        }
-      ]
+      "type": "image_picker",
+      "id": "social_icon",
+      "label": "Social Icon"
     },
     {
       "type": "url",
-      "id": "social-url",
+      "id": "social_url",
       "label": "Social URL"
     },
     {

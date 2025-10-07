@@ -55,7 +55,7 @@
                       "type": "social-icon",
                       "name": "Social Icon",
                       "settings": {
-                        "social-icon": "instagram",
+                        "social_url": "",
                         "size_desktop": "50",
                         "size_mobile": "30"
                       },
@@ -65,7 +65,7 @@
                       "type": "social-icon",
                       "name": "Social Icon",
                       "settings": {
-                        "social-icon": "facebook",
+                        "social_url": "",
                         "size_desktop": "50",
                         "size_mobile": "30"
                       },
@@ -155,9 +155,10 @@
               "blocks": {
                 "social_icon_zL9KRM": {
                   "type": "social-icon",
-                  "name": "Social Icon",
+                  "name": "Facebook",
                   "settings": {
-                    "social-icon": "instagram",
+                    "social_icon": "shopify://shop_images/facebook.svg",
+                    "social_url": "https://facebook.com/bearlyfarms",
                     "size_desktop": "50",
                     "size_mobile": "30"
                   },
@@ -165,9 +166,10 @@
                 },
                 "social_icon_cxkdYQ": {
                   "type": "social-icon",
-                  "name": "Social Icon",
+                  "name": "Instagram",
                   "settings": {
-                    "social-icon": "facebook",
+                    "social_icon": "shopify://shop_images/instagram.svg",
+                    "social_url": "https://instagram.com/bearlyfarms",
                     "size_desktop": "50",
                     "size_mobile": "30"
                   },
