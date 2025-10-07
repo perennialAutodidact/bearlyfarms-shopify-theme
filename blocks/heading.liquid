@@ -5,11 +5,19 @@
     letter-spacing: 2px;
     margin-bottom: 2rem;
   }
+
+  .d6 {
+    font-size: 3rem;
+  }
 {% endstyle %}
 
-{% assign tag = block.settings.tag %}
+{% if block.settings.tag.first == 'd' %}
+  {% assign tag = 'h1' %}
+{% else %}
+  {% assign tag = block.settings.tag %}
+{% endif %}
 
-<{{ tag }}>
+<{{ tag }} class="{{tag}}">
   {{ block.settings.text }}
 </{{ tag }}>
 
@@ -28,6 +36,10 @@
       "id": "tag",
       "label": "Heading Level",
       "options": [
+        {
+          "label": "Display 6",
+          "value": "d6"
+        },
         {
           "label": "Heading 1",
           "value": "h1"
