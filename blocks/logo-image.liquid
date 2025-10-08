@@ -2,27 +2,50 @@
   .logo-image-container {
     display: flex;
     justify-content: center;
-    min-width: 250px;
+    min-width: 75vw;
+    margin-bottom: 4rem;
   }
   .logo-image {
     display: flex;
     justify-content: center;
+    width: 100%;
   }
 
-  @media screen and (max-width: {{settings.breakpoint_lg}}px) {
+  @media screen and (min-width: {{ settings.breakpoint_sm }}px) {
     .logo-image-container {
-      max-width: 50%;
+      min-width: 50vw;
     }
   }
 
-  .logo-image-container svg {
-    height: 100%;
-    width: 100%;
+  @media screen and (min-width: {{ settings.breakpoint_md }}px) {
+    .logo-image-container {
+      max-width: 33vw;
+    }
+  }
+
+  @media screen and (min-width: {{ settings.breakpoint_lg }}px) {
+    .logo-image-container .image {
+      max-width: 60%;
+      justify-content: center;
+      align-items: center;
+      /* flex: 1; */
+    }
+  }
+
+  @media screen and (min-width: {{ settings.breakpoint_xl }}px) {
+    .logo-image-container {
+      flex: 1 1 calc(100% - 1.5rem);
+      margin-bottom: 0;
+    }
+
+    .logo-image-container .image {
+      max-width: 50%;
+    }
   }
 {% endstyle %}
 
 <div class="logo-image">
-  {% render 'logo-no-text' %}
+  {% render 'image', image: block.settings['logo-image'], width: 1400 %}
 </div>
 
 {% schema %}
@@ -42,18 +65,6 @@
       "info": "Text that takes the place of an image if it cannot be loaded.",
       "default": "Bearly Farms Logo"
     }
-    // {
-    //   "type": "number",
-    //   "id": "height",
-    //   "label": "Height (px)",
-    //   "default": 400
-    // },
-    // {
-    //   "type": "number",
-    //   "id": "width",
-    //   "label": "Width (px)",
-    //   "default": 400
-    // }
   ],
   "presets": [
     {

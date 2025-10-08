@@ -32,6 +32,12 @@
       flex-direction: {{ block.settings.orientation }};
     }
   }
+
+  @media screen and (min-width: {{settings.breakpoint_xl}}px){
+    .social-icons {
+      justify-content: flex-start;
+    }
+  }
 {% endstyle %}
 
 <div class="social-icons">
@@ -49,24 +55,6 @@
       }
       const timelines = {}
       const screenWidth = document.documentElement.clientWidth;
-
-      // function hideSocialIcons () {
-      //   const hideOnMobile = {{ block.settings.hide_on_mobile }};
-      //   const hideOnDesktop = {{ block.settings.hide_on_desktop }};
-
-      //   const shouldHideOnMobile = hideOnMobile && screenWidth < breakpoints.lg;
-      //   const shouldHideOnDesktop = hideOnDesktop && screenWidth >= breakpoints.lg;
-      //   socialIconsContainers.forEach((container)=>{
-      //     console.log({container, shouldHideOnDesktop, shouldHideOnMobile})
-      //     if (shouldHideOnMobile || shouldHideOnDesktop){
-      //       container.style.display = 'none';
-      //     } else {
-      //       container.style.display = 'flex';
-      //     }
-      //   })
-      // }
-      // window.addEventListener('resize', hideSocialIcons);
-      // hideSocialIcons()
 
       function setup() {
         const socialIcons = document.querySelectorAll('.social-icon');
@@ -91,12 +79,20 @@
               );
             });
             
+            
             timeline.fromTo(
-              iconSelector('.layer-3 svg *  '),
+              iconSelector('.layer-3.with-fill svg *'),
               { fill: initialColor },
               { duration: 0.4, fill: iconHoverColor },
               '-=0.3'
             );
+
+            timeline.fromTo(
+              iconSelector('.layer-3.no-fill svg *'),
+              { stroke: initialColor },
+              { duration: 0.4, stroke: iconHoverColor },
+              '-=0.3'
+            )
             
             icon.addEventListener('mouseover', (event) => {
               timeline.play()

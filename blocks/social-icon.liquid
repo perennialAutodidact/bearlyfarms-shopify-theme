@@ -24,20 +24,30 @@
     position: absolute;
   }
 
-  .social-icon .layer:nth-child(1) {
+  .social-icon .layer-1 {
     z-index:11;
   }
 
-  .social-icon .layer:nth-child(1) svg * {
+  .social-icon .layer-1 svg * {
     fill: {{ settings.color_primary_900 }};
   }
 
-  .social-icon .layer:nth-child(2)  {
+  .social-icon.phone .layer-1 svg * {
+    fill: none;
+    stroke: {{ settings.color_primary_900 }};
+  }
+
+  .social-icon .layer-2  {
     z-index: 12;
   }
 
-  .social-icon .layer:nth-child(2) svg * {
+  .social-icon .layer-2 svg * {
     fill: {{ settings.color_primary_500 }};
+  }
+
+  .social-icon.phone .layer-2 svg * {
+    fill:none;
+    stroke: {{ settings.color_primary_500 }};
   }
 
   .social-icon .layer-3 {
@@ -47,33 +57,30 @@
   .social-icon .layer-3 svg * {
       fill: {{ settings.color_light }};
   }
+
+  .social-icon.phone .layer-3 svg * {
+    fill: none;
+    stroke: {{ settings.color_light }}
+  }
 {% endstyle %}
 
 {% assign social_url = block.settings.social_url.url %}
-{% comment %} {% assign is_phone = block.settings.social_icon contains 'phone' %} {% endcomment %}
-{% comment %} {% assign is_email = block.settings.social_icon contains 'email' %} {% endcomment %}
 {% assign icon_filename = block.settings.social_icon | split: '/' | last %}
 {% assign social_icon = 'images/icons/' | append: icon_filename | inline_asset_content %}
+{% assign icon_class = icon_filename | split: '.' | first %}
 
-{% liquid
-  if block.settings.social_icon contains 'phone'
-    assign href = 'tel:{{shop.phone}}'
-  elsif block.settings.social_icon contains 'email'
-    assign href = 'mailto:{{shop.email}}'
-  else
-    assign href = social_url
-  endif
-%}
-
-<div class="social-icon {{block.settings.social_icon}}">
-  {{ icon_filename }}
+<div class="social-icon {{icon_class}}">
   {% for i in (1..3) %}
     {% if i == 3 %}
       <a
-        href="{{ href}}"
+        href="{{ social_url }}"
         rel="noreferrer"
         target="_blank"
-        class="layer layer-{{i}} {% if i < 3 %} hidden_mobile {% endif %}"
+        class="
+          layer layer-{{i}}
+          {% if i < 3 %} hidden_mobile {% endif %} {{icon_class}}
+          {% if icon_class == 'phone' %} no-fill {% else %} with-fill {% endif %}
+        "
       >
         {{ social_icon }}
       </a>

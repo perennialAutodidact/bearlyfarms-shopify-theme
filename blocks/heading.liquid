@@ -1,13 +1,23 @@
 {% style %}
   .heading {
-    width: 100%;
+    width: 80%;
     color: {{settings[block.settings.color]}};
     letter-spacing: 2px;
     margin-bottom: 2rem;
+    display: flex;
+    justify-content:center;
   }
 
-  .d6 {
-    font-size: 3rem;
+  @media screen and (min-width: {{ settings.breakpoint_lg }}px) {
+    .heading h1 {
+      font-size: 3rem;
+    }
+  }
+
+  @media screen and (min-width: {{settings.breakpoint_xl}}px) {
+    .heading {
+      justify-content: flex-start;
+    }
   }
 {% endstyle %}
 
