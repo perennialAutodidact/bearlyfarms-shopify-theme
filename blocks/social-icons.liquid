@@ -109,7 +109,7 @@
             Array.from([2, 1, 0]).forEach((offset, index) => {
               gsap.set(
                 iconSelector(`.layer-${index + 1}`),
-                { top: `${-offset * 5}px` },
+                { display: 'none' },
               );
             });
           }) 
