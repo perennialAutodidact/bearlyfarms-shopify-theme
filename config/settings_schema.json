@@ -54,7 +54,7 @@
     ]
   },
   {
-    "name": "t:general.breakpoints",
+    "name": "Breakpoints",
     "settings": [
       {
         "type": "number",
