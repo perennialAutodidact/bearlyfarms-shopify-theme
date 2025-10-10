@@ -106,7 +106,7 @@
           socialIcons.forEach(icon => {
             const iconSelector = gsap.utils.selector(icon);
             
-            Array.from([2, 1, 0]).forEach((offset, index) => {
+            Array.from([1, 0]).forEach((offset, index) => {
               gsap.set(
                 iconSelector(`.layer-${index + 1}`),
                 { display: 'none' },
